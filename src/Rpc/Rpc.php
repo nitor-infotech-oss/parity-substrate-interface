@@ -6,12 +6,12 @@ use neha0921\SubstrateInterfacePackage\ApiHandler;
 
 class Rpc 
 {
-    const RPC_PREFIX = 'rpc';
+    const RPC_PREFIX = 'rpc_';
     public $system;
-    private $a;
-    public function __construct (ApiHandler $a){
-       
-        $this->system = new System($a);
+    private $apiHandler;
+    public function __construct (ApiHandler $apiHandler){
+        $this->apiHandler = $apiHandler;
+        $this->system = new System($apiHandler);
     }
    
     public function get_system() {
@@ -20,8 +20,10 @@ class Rpc
 
 
     public function methods() {
+
         $response = json_decode($this->apiHandler->APIHandler(Rpc::RPC_PREFIX . __FUNCTION__));
-        return $response->result;
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
     }
      
 

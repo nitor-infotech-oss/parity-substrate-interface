@@ -12,11 +12,12 @@ function callRpcData() {
         data: { method_name: methodName, params : paramsVal },
         success: function (result) {
             var data = JSON.parse(result);
-            var obj = data.result;
-            if(data.result){
+            console.log(data);
+            var obj = data.data;
+            if(data.status){
                 $("#error-msg").addClass('hidden');
-            if(jQuery.type( data.result ) === "string"){
-                $("#result-data").text(data.result);
+            if(jQuery.type( data.data ) === "string"){
+                $("#result-data").text(data.data);
             }else{
 
             for (const [key, value] of Object.entries(obj)) {
@@ -35,7 +36,7 @@ function callRpcData() {
         }
     }else{
         $("#error-msg").removeClass('hidden');
-        $("#error-msg").html(data.error.message);
+        $("#error-msg").html(data.data.message);
         
     }
         }
@@ -52,7 +53,7 @@ function getAllMethods() {
             var data = JSON.parse(result);
             console.log(data);
 
-            optionData = data.result.methods;
+            optionData = data.methods;
 
             // Add options
             $("#rpc-method-name").html("");

@@ -20,22 +20,51 @@ class System
     public function name()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
-        return $response->result;
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
     }
 
-    /* system_name endpoint API*/
+    /* system_chain endpoint API*/
 
     public function chain()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
-        return $response->result;
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
     }
 
-    /* system_name endpoint API*/
+    /* system_health endpoint API*/
 
     public function health()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
-        return $response->result;
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
     }
+
+    /* system_version endpoint API*/
+
+    public function version()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+    /* system_peers endpoint API*/
+
+    public function peers()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+    /* system_properties endpoint API*/
+
+    public function properties()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+    
 }

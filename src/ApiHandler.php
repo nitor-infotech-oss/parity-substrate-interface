@@ -22,7 +22,7 @@ class ApiHandler
             $this->httpMethod = 'POST';
         }
         $rpc = new Rpc($this);
-        $this->rpc = (object)['system' => $rpc->get_system()];
+        $this->rpc = (object)['rpc'=> $rpc, 'system' => $rpc->get_system()];
         return $this;
     }
 
