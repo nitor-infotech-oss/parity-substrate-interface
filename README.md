@@ -12,14 +12,6 @@ git clone https://github.com/neha0921/substrate-interface-package.git
 ```
 
 
-## After Changes
-
-1. composer install
-2. start writing code in src directory
-3. test your code in tests directory
-4. check hint from existing file
-5. just remove from here to top all lines till Clone Package after successfully clone and editing done
-
 ## Installation
 
 You can install the package via composer:
