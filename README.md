@@ -39,7 +39,7 @@ echo $testClass->rpc->system->name();
 ## Testing
 
 ```bash
-composer test
+vendor/phpunit/phpunit/phpunit
 ```
 
 ## Changelog
