@@ -1,0 +1,28 @@
+.col-sm-8 {
+    margin: 2% 20%;
+    padding: 2%;
+    background-color : #D6F4F8;
+    border-radius: 5px;
+  }
+
+  .btn-success{
+    margin-left: 80%;
+  }
+
+  .first-panel{
+      padding: 2%;
+
+  }
+  #result-data{
+    background-color : #fff;
+    padding: 2%;
+    border-radius: 5px;
+    word-wrap: break-word;
+  }
+
+.hidden{
+  display: none;
+}
+#container{
+  margin: 1%;
+}
