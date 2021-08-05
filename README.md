@@ -8,7 +8,7 @@
 ## Clone Package
 
 ```bash
-git clone https://github.com/neha0921/substrate-interface-package.git
+git clone https://github.com/nitor-infotech-oss/parity-substrate-interface.git
 ```
 
 
@@ -17,13 +17,13 @@ git clone https://github.com/neha0921/substrate-interface-package.git
 You can install the package via composer:
 
 ```bash
-composer require neha0921/substrate-interface-package
+composer require nitor-infotech-oss/parity-substrate-interface
 ```
 
 ## Usage (Just Like)
 
 ```php
-$testClass = new ApiHandler("http_url");
+$testClass = new SubstrateInterface("http_url");
 echo $testClass->rpc->system->name();
 ```
 

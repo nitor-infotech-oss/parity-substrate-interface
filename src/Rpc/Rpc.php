@@ -2,14 +2,14 @@
 
 namespace neha0921\SubstrateInterfacePackage\Rpc;
 
-use neha0921\SubstrateInterfacePackage\ApiHandler;
+use neha0921\SubstrateInterfacePackage\SubstrateInterface;
 
 class Rpc 
 {
     const RPC_PREFIX = 'rpc_';
     public $system;
     private $apiHandler;
-    public function __construct (ApiHandler $apiHandler){
+    public function __construct (SubstrateInterface $apiHandler){
         $this->apiHandler = $apiHandler;
         $this->system = new System($apiHandler);
     }

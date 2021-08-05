@@ -60,7 +60,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 <?php
 
-/* $obj = new ApiHandler("http://127.0.0.1:8000");
+/* $obj = new SubstrateInterface("http://127.0.0.1:8000");
 
 echo "Name :: ". $obj->rpc->system->name().'<br>';
 

@@ -2,7 +2,7 @@
 
 namespace neha0921\SubstrateInterfacePackage\Rpc;
 
-use neha0921\SubstrateInterfacePackage\ApiHandler;
+use neha0921\SubstrateInterfacePackage\SubstrateInterface;
 
 class System
 {
@@ -11,7 +11,7 @@ class System
     public $apiHandler;
 
     private $a;
-    public function __construct (ApiHandler $apiHandler){
+    public function __construct (SubstrateInterface $apiHandler){
         $this->apiHandler = $apiHandler;
     }
 

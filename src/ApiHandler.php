@@ -4,7 +4,7 @@ namespace neha0921\SubstrateInterfacePackage;
 
 use neha0921\SubstrateInterfacePackage\Rpc\Rpc;
 
-class ApiHandler
+class SubstrateInterface
 {
     const API_URL = "http://127.0.0.1:8000";
 
