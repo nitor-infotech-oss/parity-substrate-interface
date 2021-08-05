@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5fd8c5bc4d0949dfdbbdc93b44381527656ba109',
+        'reference' => '56ad9d2540f6dd639950af1b79375a545ce40198',
         'name' => 'nitor-infotech-oss/parity-substrate-interface',
         'dev' => true,
     ),
@@ -82,7 +82,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5fd8c5bc4d0949dfdbbdc93b44381527656ba109',
+            'reference' => '56ad9d2540f6dd639950af1b79375a545ce40198',
             'dev_requirement' => false,
         ),
         'phar-io/manifest' => array(

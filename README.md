@@ -17,7 +17,7 @@ git clone https://github.com/nitor-infotech-oss/parity-substrate-interface.git
 You can install the package via composer:
 
 ```bash
-composer require nitor-infotech-oss/parity-substrate-interface
+composer require neha0921/substrate-interface-package
 ```
 
 ## Usage (Just Like)

@@ -7,8 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
-    'nitor-infotech-oss\\SubstrateInterfacePackage\\Tests\\' => array($baseDir . '/tests'),
-    'nitor-infotech-oss\\SubstrateInterfacePackage\\' => array($baseDir . '/src'),
+    'nitorInfoTechOss\\SubstrateInterfacePackage\\Tests\\' => array($baseDir . '/tests'),
+    'nitorInfoTechOss\\SubstrateInterfacePackage\\' => array($baseDir . '/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
