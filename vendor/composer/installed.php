@@ -1,12 +1,12 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
-        'name' => 'neha0921/substrate-interface-package',
+        'reference' => '5fd8c5bc4d0949dfdbbdc93b44381527656ba109',
+        'name' => 'nitor-infotech-oss/parity-substrate-interface',
         'dev' => true,
     ),
     'versions' => array(
@@ -56,12 +56,12 @@
             'dev_requirement' => true,
         ),
         'friendsofphp/php-cs-fixer' => array(
-            'pretty_version' => 'v2.19.0',
-            'version' => '2.19.0.0',
+            'pretty_version' => 'v2.19.1',
+            'version' => '2.19.1.0',
             'type' => 'application',
             'install_path' => __DIR__ . '/../friendsofphp/php-cs-fixer',
             'aliases' => array(),
-            'reference' => 'd5b8a9d852b292c2f8a035200fa6844b1f82300b',
+            'reference' => '1fa4af92841f67362c053728989b262fba8eb1ec',
             'dev_requirement' => true,
         ),
         'myclabs/deep-copy' => array(
@@ -76,13 +76,13 @@
                 0 => '1.10.2',
             ),
         ),
-        'neha0921/substrate-interface-package' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+        'nitor-infotech-oss/parity-substrate-interface' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '5fd8c5bc4d0949dfdbbdc93b44381527656ba109',
             'dev_requirement' => false,
         ),
         'phar-io/manifest' => array(

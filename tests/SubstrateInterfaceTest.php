@@ -1,8 +1,8 @@
 <?php
 
-namespace neha0921\SubstrateInterfacePackage\Tests;
+namespace nitorInfoTechOss\SubstrateInterfacePackage\Tests;
 
-use neha0921\SubstrateInterfacePackage\SubstrateInterface;
+use nitorInfoTechOss\SubstrateInterfacePackage\SubstrateInterface;
 use PHPUnit\Framework\TestCase;
 
 class SubstrateInterfaceTest extends TestCase

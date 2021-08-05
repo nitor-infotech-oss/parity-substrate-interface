@@ -2,7 +2,7 @@
 
 ## Budge Goes Here
 
-[![Issue](https://img.shields.io/github/issues/neha0921/substrate-interface-package?style=flat-square)](https://github.com/neha0921/substrate-interface-package)
+[![Issue](https://img.shields.io/github/issues/nitor-infotech-oss/parity-substrate-interface?style=flat-square)](https://github.com/nitor-infotech-oss/parity-substrate-interface)
 
 
 ## Clone Package

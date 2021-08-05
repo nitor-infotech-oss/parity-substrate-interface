@@ -26,8 +26,8 @@ class ComposerStaticInit42f2a6f0e922fad311cf8c347e5df102
         ),
         'n' => 
         array (
-            'neha0921\\SubstrateInterfacePackage\\Tests\\' => 41,
-            'neha0921\\SubstrateInterfacePackage\\' => 35,
+            'nitor-infotech-oss\\SubstrateInterfacePackage\\Tests\\' => 51,
+            'nitor-infotech-oss\\SubstrateInterfacePackage\\' => 45,
         ),
         'W' => 
         array (
@@ -83,11 +83,11 @@ class ComposerStaticInit42f2a6f0e922fad311cf8c347e5df102
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'neha0921\\SubstrateInterfacePackage\\Tests\\' => 
+        'nitor-infotech-oss\\SubstrateInterfacePackage\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'neha0921\\SubstrateInterfacePackage\\' => 
+        'nitor-infotech-oss\\SubstrateInterfacePackage\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

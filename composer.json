@@ -1,5 +1,5 @@
 {
-    "name": "neha0921/substrate-interface-package",
+    "name": "nitor-infotech-oss/parity-substrate-interface",
     "description": "By using package you can interact with running substrate node.",
     "license": "MIT",
     "authors": [
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "neha0921\\SubstrateInterfacePackage\\": "src"
+            "nitorInfoTechOss\\SubstrateInterfacePackage\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "neha0921\\SubstrateInterfacePackage\\Tests\\": "tests"
+            "nitorInfoTechOss\\SubstrateInterfacePackage\\Tests\\": "tests"
         }
     },
     "scripts": {

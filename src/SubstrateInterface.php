@@ -1,8 +1,8 @@
 <?php
 
-namespace neha0921\SubstrateInterfacePackage;
+namespace nitorInfoTechOss\SubstrateInterfacePackage;
 
-use neha0921\SubstrateInterfacePackage\Rpc\Rpc;
+use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Rpc;
 
 class SubstrateInterface
 {
