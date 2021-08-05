@@ -1,6 +1,6 @@
 <?php
 
-namespace TheTestCoder\PhpPackageStructure\Tests;
+namespace neha0921\SubstrateInterfacePackage\Tests;
 
 use neha0921\SubstrateInterfacePackage\SubstrateInterface;
 use PHPUnit\Framework\TestCase;
