@@ -2,19 +2,17 @@
     "name": "nitor-infotech-oss/parity-substrate-interface",
     "description": "By using package you can interact with running substrate node.",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Neha Reddy",
-            "email": "neha.reddy@nitorinfotech.com"
-        }
-    ],
+    "authors": [{
+        "name": "Neha Reddy",
+        "email": "neha.reddy@nitorinfotech.com"
+    }],
     "minimum-stability": "dev",
     "require": {
-        "php": "7.2.24"
+        "php": "^7.2.24"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
-        "phpunit/phpunit": "7.0.2"
+        "phpunit/phpunit": "^7.0.2"
     },
     "autoload": {
         "psr-4": {
