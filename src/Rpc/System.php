@@ -11,22 +11,25 @@ class System
     public $apiHandler;
 
     private $a;
-    public function __construct (SubstrateInterface $apiHandler){
+    public function __construct(SubstrateInterface $apiHandler)
+    {
         $this->apiHandler = $apiHandler;
     }
 
-    /* system_name endpoint API*/
 
-    public function name()
+
+    /* system_chain endpoint API*/
+
+    public function chain()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
         $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
         return json_encode($result);
     }
 
-    /* system_chain endpoint API*/
+    /* system_chainType endpoint API*/
 
-    public function chain()
+    public function chainType()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
         $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
@@ -42,14 +45,41 @@ class System
         return json_encode($result);
     }
 
-    /* system_version endpoint API*/
+    /* system_localListenAddresses endpoint API*/
 
-    public function version()
+    public function localListenAddresses()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
         $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
         return json_encode($result);
     }
+    /* system_localPeerId endpoint API*/
+
+    public function localPeerId()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+
+    /* system_name endpoint API*/
+
+    public function name()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+
+    /* system_nodeRoles endpoint API*/
+
+    public function nodeRoles()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+
     /* system_peers endpoint API*/
 
     public function peers()
@@ -66,5 +96,31 @@ class System
         $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
         return json_encode($result);
     }
-    
+
+    /* system_reservedPeers endpoint API*/
+
+    public function reservedPeers()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+
+    /* system_syncState endpoint API*/
+
+    public function syncState()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
+
+    /* system_version endpoint API*/
+
+    public function version()
+    {
+        $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
+        $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
+        return json_encode($result);
+    }
 }

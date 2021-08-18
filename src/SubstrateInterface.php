@@ -22,7 +22,16 @@ class SubstrateInterface
             $this->httpMethod = 'POST';
         }
         $rpc = new Rpc($this);
-        $this->rpc = (object)['rpc'=> $rpc, 'system' => $rpc->get_system()];
+        $this->rpc = (object)[
+            'rpc' => $rpc,
+            'system' => $rpc->get_system(),
+            'state' => $rpc->get_state(),
+            'author' => $rpc->get_author(),
+            'chain' => $rpc->get_chain(),
+            'grandpa' => $rpc->get_grandpa(),
+            'keypair' => $rpc->get_keypair(),
+            'runtime' => $rpc->get_runtime()
+        ];
         return $this;
     }
 
@@ -31,7 +40,7 @@ class SubstrateInterface
     Input parameter :: URL, HTTP method (GET, POST..) and Body payload.
     Output :: API response
     */
-    public function APIHandler($MethodName,$param = [],$id = 1)
+    public function APIHandler($MethodName, $param = [], $id = 1)
     {
         /* Set input payload */
         $inputData = [
