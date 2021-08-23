@@ -2,7 +2,7 @@
 
 namespace nitorInfoTechOss\SubstrateInterfacePackage\Library;
 
-use ValueErrorException;
+use neha0921\SubstrateInterfacePackage\Exception\ValueErrorException;
 
 class ss58
 {
@@ -17,7 +17,7 @@ class ss58
     -------
     Decoded string AccountId
      */
-    public function ss58_decode($address, $valid_address_type = NULL)
+    public static function ss58_decode($address, $valid_address_type = NULL)
     {
 
         $checksum_prefix = 'SS58PRE';
@@ -69,7 +69,7 @@ class ss58
 
     */
 
-    public function ss58_encode($address, $address_type = 42)
+    public static function ss58_encode($address, $address_type = 42)
     {
 
         $checksum_prefix = 'SS58PRE';
@@ -90,10 +90,10 @@ class ss58
         } else {
             throw new ValueErrorException("Invalid length for address");
         }
-        $address_format = bytes([$address_type]) . $address_bytes;
+        $address_format = random_bytes($address_type) . $address_bytes;
         $checksum = hash($checksum_prefix, $address_format);
 
-        return base58::base58_encode($address_format, array_slice($checksum, 0, $checksum_length));
+        return base58::base58_encode(utf8_decode($address_format.$checksum));
     }
 
     /*
@@ -107,22 +107,22 @@ class ss58
     Returns
     -------
     */
-    public function ss58_encode_account_index($account_index, $address_type = 42)
+    /* public function ss58_encode_account_index($account_index, $address_type = 42)
     {
 
-        if (0 <= $account_index <= 2 ** 8 - 1) {
+        if (0 <= $account_index <= (pow(2, 8)- 1)) {
             $account_idx_encoder = U8();
-        } else if (2 ** 8 <= $account_index <= 2 ** 16 - 1) {
+        } else if (2 ** 8 <= $account_index <= pow(2, 16) - 1) {
             $account_idx_encoder = U16();
-        } else if (2 ** 16 <= $account_index <= 2 ** 32 - 1) {
+        } else if (2 ** 16 <= $account_index <= pow(2, 32) - 1) {
             $account_idx_encoder = U32();
-        } else if (2 ** 32 <= $account_index <= 2 ** 64 - 1) {
+        } else if (2 ** 32 <= $account_index <= pow(2, 64) - 1) {
             $account_idx_encoder = U64();
         } else {
             throw new ValueErrorException("Value too large for an account index");
         }
         return $this->ss58_encode($account_idx_encoder . encode($account_index) . data, $address_type);
-    }
+    } */
 
     /*
     Decodes given SS58 encoded address to an AccountIndex
@@ -137,7 +137,7 @@ class ss58
     Decoded int AccountIndex
     account_index_bytes = ss58_decode(address, valid_address_type) */
 
-    public function ss58_decode_account_index($address, $valid_address_type = 42)
+    /* public function ss58_decode_account_index($address, $valid_address_type = 42)
     {
 
         if (sizeof($account_index_bytes) == 2) {
@@ -151,5 +151,5 @@ class ss58
         } else {
             throw new ValueErrorException("Invalid account index length");
         }
-    }
+    } */
 }
