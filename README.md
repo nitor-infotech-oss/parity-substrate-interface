@@ -1,4 +1,5 @@
 # Project Info
+We have implemented package which help use to communicate with surface interface through function.
 
 ## Budge Goes Here
 
@@ -17,8 +18,16 @@ git clone https://github.com/nitor-infotech-oss/parity-substrate-interface.git
 You can install the package via composer:
 
 ```bash
-composer require neha0921/substrate-interface-package
+composer require nitorInfoTechOss/substrate-interface-package
 ```
+
+## Steps to create test enviornment
+
+1. Create Test folder and one php file to test code
+
+2. run command "touch composer.json"
+
+3.  try to run following code.
 
 ## Usage (Just Like)
 

@@ -2,7 +2,7 @@
 
 namespace nitorInfoTechOss\SubstrateInterfacePackage\Library;
 
-use neha0921\SubstrateInterfacePackage\Exception\ValueErrorException;
+use nitorInfoTechOss\SubstrateInterfacePackage\Exception\ValueErrorException;
 
 class ss58
 {

@@ -2,24 +2,34 @@
 
 namespace nitorInfoTechOss\SubstrateInterfacePackage;
 
+use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Keypair;
 use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Rpc;
+use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Transaction;
 
 class SubstrateInterface
 {
     const API_URL = "http://127.0.0.1:8000";
 
-    public $rpc;
+    public $rpc, $tx, $token_symbol, $token_decimals;
 
     public $APIurl;
 
     public $httpMethod;
 
     /* Constuctor of the class which get call first*/
-    public function __construct($APiURL = "")
+    public function __construct($APiURL = '', $websocket = 'None', $ss58_format = 'None', $type_registry = 'None', $type_registry_preset = 'None', $cache_region = 'None', $address_type = 'None', $runtime_config = 'None', $use_remote_preset = False)
     {
         if (!empty($APiURL)) {
             $this->APIurl = ($APiURL);
             $this->httpMethod = 'POST';
+            $this->websocket = $websocket;
+            $this->ss58_format = $ss58_format;
+            $this->type_registry = $type_registry;
+            $this->type_registry_preset = $type_registry_preset;
+            $this->cache_region = $cache_region;
+            $this->address_type = $address_type;
+            $this->runtime_config = $runtime_config;
+            $this->use_remote_preset = $use_remote_preset;
         }
         $rpc = new Rpc($this);
         $this->rpc = (object)[
@@ -29,8 +39,13 @@ class SubstrateInterface
             'author' => $rpc->get_author(),
             'chain' => $rpc->get_chain(),
             'grandpa' => $rpc->get_grandpa(),
-            'keypair' => $rpc->get_keypair(),
+            // 'keypair' => $rpc->get_keypair(),
             'runtime' => $rpc->get_runtime()
+        ];
+
+        $tx = new Transaction($this);
+        $this->tx = (object)[
+            'balances' => $tx->get_balances(),
         ];
         return $this;
     }
@@ -72,4 +87,67 @@ class SubstrateInterface
 
         return $response;
     }
+
+    /* ss58_format endpoint API*/
+
+    public function ss58_format()
+    {
+        if ($this->ss58_format == 'None' || !$this->ss58_format) {
+            $properies = json_decode($this->rpc->system->properties(), true);
+            if (!empty($properies)) {
+                $this->ss58_format =  $properies['data']['ss58Format'];
+            } else {
+                $this->ss58_format =  42;
+            }
+        }
+
+        return $this->ss58_format;
+    }
+
+    /* token_decimals endpoint API*/
+
+    public function token_decimals()
+    {
+        if ($this->token_decimals == 'None') {
+            $properies = json_decode($this->rpc->system->properties(), true);
+            if (!empty($properies)) {
+                $this->token_decimals =  $properies['data']['tokenDecimals'];
+            } else {
+                $this->token_decimals =  42;
+            }
+        }
+
+        return $this->token_decimals;
+    }
+
+    /* token_symbol endpoint API*/
+
+    public function token_symbol()
+    {
+        if ($this->token_symbol == 'None') {
+            $properies = json_decode($this->rpc->system->properties(), true);
+            if (!empty($properies)) {
+                $this->token_symbol =  $properies['data']['tokenSymbol'];
+            } else {
+                $this->token_symbol =  42;
+            }
+        }
+
+        return $this->token_symbol;
+    }
+
+    /* Set Signer endpoint API*/
+
+    public function setSigner($KeySet)
+    {
+        /* $this->public_key = $KeySet['public_key'];
+        $this->private_key = $KeySet['private_key'];
+        $this->address_type = $KeySet['address_type'];
+        $this->ss58_address = $KeySet['ss58_address']; */
+
+        $response = json_decode($this->APIHandler("keypair_sign", [$KeySet]));
+        $this->signature = ($response->result) ? $response->result->signature : NULL;
+        return $this->signature;
+    }
 }
+?>

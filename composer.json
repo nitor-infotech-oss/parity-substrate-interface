@@ -8,7 +8,11 @@
     }],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.2.24"
+        "php": "^7.2.24",
+        "curl/curl": "^2.3",
+        "deemru/blake2b": "^1.0",
+        "furqansiddiqui/bip39-mnemonic-php": "^0.1.4",
+        "stephenhill/base58": "^1.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",

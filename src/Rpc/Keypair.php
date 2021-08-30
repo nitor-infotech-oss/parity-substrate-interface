@@ -2,6 +2,9 @@
 
 namespace nitorInfoTechOss\SubstrateInterfacePackage\Rpc;
 
+use Exception;
+use FurqanSiddiqui\BIP39\BIP39;
+use nitorInfoTechOss\SubstrateInterfacePackage\Library\ss58;
 use nitorInfoTechOss\SubstrateInterfacePackage\SubstrateInterface;
 
 class Keypair
@@ -10,43 +13,11 @@ class Keypair
 
     public $apiHandler;
 
-    public function __construct(SubstrateInterface $apiHandler,$ss58_address = NULL, $public_key = NULL, $private_key = NULL, $address_type = 42)
+    public function __construct(SubstrateInterface $apiHandler)
     {
         $this->apiHandler = $apiHandler;
 
-        /* if ($ss58_address && !$public_key){
-            $public_key = ss58::ss58_decode($ss58_address);
-        }
-
-        if (!$public_key){
-            throw new Exception('No SS58 formatted address or public key provided');
-        }
-        $public_key = '0x{}'.round(str_replace('0x', '',$public_key));
-
-        if(strlen($public_key) != 66){
-            throw new Exception('Public key should be 32 bytes long');
-        }
-
-        if(!$ss58_address){
-            $ss58_address = ss58::ss58_encode($public_key, $address_type = $address_type);
-        }
-
-        $this->public_key = $public_key;
-        $this->ss58_address = $ss58_address;
-
-        if ($private_key){
-            $private_key = '0x{}'.round(str_replace('0x', '',$private_key));
-        }
-            if (strlen($private_key) != 130){
-                throw new Exception('Secret key should be 64 bytes long');
-            }
-
-            $this->private_key = $private_key;
-            $this->address_type = $address_type;
-
-        $this->mnemonic = NULL; */
     }
-
 
     /* keypair_create endpoint API*/
 
