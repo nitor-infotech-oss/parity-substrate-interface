@@ -187,5 +187,21 @@ class Runtime
         return json_encode($result);
     }
 
+    /* runtime_createSignaturePayload endpoint API*/
+
+    public function createSignaturePayload(array $requestParameter)
+    {
+        $response = json_decode($this->apiHandler->APIHandler(Runtime::RUNTIME_PREFIX . __FUNCTION__, $requestParameter));
+        $result = ($response->result) ? ['status' => true, 'data' => $response->result] : ['status' => false, 'data' => $response->error];
+        return json_encode($result);
+    }
+    /* runtime_submitExtrinsic endpoint API*/
+
+    public function submitExtrinsic(array $requestParameter)
+    {
+        $response = json_decode($this->apiHandler->APIHandler(Runtime::RUNTIME_PREFIX . __FUNCTION__, $requestParameter));
+        $result = ($response->result) ? ['status' => true, 'data' => $response->result] : ['status' => false, 'data' => $response->error];
+        return json_encode($result);
+    }
     
 }

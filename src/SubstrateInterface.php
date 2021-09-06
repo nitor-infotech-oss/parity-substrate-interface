@@ -39,7 +39,7 @@ class SubstrateInterface
             'author' => $rpc->get_author(),
             'chain' => $rpc->get_chain(),
             'grandpa' => $rpc->get_grandpa(),
-            // 'keypair' => $rpc->get_keypair(),
+            'keypair' => $rpc->get_keypair(),
             'runtime' => $rpc->get_runtime()
         ];
 
