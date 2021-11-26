@@ -1,4 +1,8 @@
 <?php
+/**
+ * invoke RPC endpoints. Handle request parameters. Perform encoding and decoding
+ * setsigner for tokens
+ */
 
 namespace nitorInfoTechOss\SubstrateInterfacePackage;
 
@@ -6,6 +10,10 @@ use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Keypair;
 use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Rpc;
 use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Transaction;
 
+/**
+ * base class to make endpoint call, encoding, decoding
+ * all basics to handle tokena and sign the request
+ */
 class SubstrateInterface
 {
     const API_URL = "http://127.0.0.1:8000";
@@ -16,7 +24,11 @@ class SubstrateInterface
 
     public $httpMethod;
 
-    /* Constuctor of the class which get call first*/
+    /** 
+     * Constuctor of the class which get call first
+     * initialize the API request. Initialize web sockets, URL etc.
+     * initialize the call type
+    */
     public function __construct($APiURL = '', $websocket = 'None', $ss58_format = 'None', $type_registry = 'None', $type_registry_preset = 'None', $cache_region = 'None', $address_type = 'None', $runtime_config = 'None', $use_remote_preset = False)
     {
         if (!empty($APiURL)) {
