@@ -16,18 +16,37 @@ use nitorInfoTechOss\SubstrateInterfacePackage\Rpc\Transaction;
  */
 class SubstrateInterface
 {
+    /** @property */ 
     const API_URL = "http://127.0.0.1:8000";
 
+    /** @property */
     public $rpc, $tx, $token_symbol, $token_decimals;
 
+    /** @property */
     public $APIurl;
 
+    /** @property */
     public $httpMethod;
 
     /** 
+     * class constructor
+     * 
      * Constuctor of the class which get call first
      * initialize the API request. Initialize web sockets, URL etc.
-     * initialize the call type
+     * initialize the call type. Fromat the request
+     * 
+     * 
+     * @param string $APiURL api url endpoint to connect
+     * @param string $websocket socket address. Default to None
+     * @param string $ss58_format encoding format. Default to None
+     * @param string $type_registry Default is None
+     * @param string $type_registry_preset Default is None
+     * @param string $cache_region Default is None
+     * @param string $address_type Default is None
+     * @param string $runtime_config Default is None
+     * @param string $use_remote_preset Default is False
+     * 
+     * @return void
     */
     public function __construct($APiURL = '', $websocket = 'None', $ss58_format = 'None', $type_registry = 'None', $type_registry_preset = 'None', $cache_region = 'None', $address_type = 'None', $runtime_config = 'None', $use_remote_preset = False)
     {
@@ -63,10 +82,17 @@ class SubstrateInterface
     }
 
 
-    /* Function which call any API through CRUL
-    Input parameter :: URL, HTTP method (GET, POST..) and Body payload.
-    Output :: API response
-    */
+    /**
+     * Function which call any API through CURL
+     * 
+     * initialize curl URL and make request through curl 
+     * 
+     * Input parameter :: URL, HTTP method (GET, POST..) and Body payload.
+     * Output :: API response  
+     * 
+     * 
+     */ 
+    
     public function APIHandler($MethodName, $param = [], $id = 1)
     {
         /* Set input payload */
