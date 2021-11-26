@@ -4,6 +4,10 @@ namespace nitorInfoTechOss\SubstrateInterfacePackage\Library;
 
 use nitorInfoTechOss\SubstrateInterfacePackage\Exception\ValueErrorException;
 
+use deemru\Blake2b;
+use Exception;
+use StephenHill\Base58;
+
 class ss58
 {
     /*
@@ -19,41 +23,45 @@ class ss58
      */
     public static function ss58_decode($address, $valid_address_type = NULL)
     {
+        if (substr( $address, 0, 2 ) == "0x"){
+            return $address;
+        }
 
+        $base58 = new Base58('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ');
         $checksum_prefix = 'SS58PRE';
 
-        $ss58_format = base58::base58_decode($address);
+        $ss58_format = $base58->decode($address);
 
         if ($valid_address_type && $ss58_format[0] != $valid_address_type) {
-            throw new ValueErrorException("Invalid Address type");
+            throw new Exception("Invalid Address type");
         }
         # Determine checksum length according to length of address string
-        if (in_array(sizeof($ss58_format), [3, 4, 6, 10])) {
+        if (in_array(strlen($ss58_format), [3, 4, 6, 10])) {
             $checksum_length = 1;
-        } else if (in_array(sizeof($ss58_format), [5, 7, 11, 35])) {
+        } else if (in_array(strlen($ss58_format), [5, 7, 11, 35])) {
             $checksum_length = 2;
-        } else if (in_array(sizeof($ss58_format), [8, 12])) {
+        } else if (in_array(strlen($ss58_format), [8, 12])) {
             $checksum_length = 3;
-        } else if (in_array(sizeof($ss58_format), [9, 13])) {
+        } else if (in_array(strlen($ss58_format), [9, 13])) {
             $checksum_length = 4;
-        } else if (in_array(sizeof($ss58_format), [14])) {
+        } else if (in_array(strlen($ss58_format), [14])) {
             $checksum_length = 5;
-        } else if (in_array(sizeof($ss58_format), [15])) {
+        } else if (in_array(strlen($ss58_format), [15])) {
             $checksum_length = 6;
-        } else if (in_array(sizeof($ss58_format), [16])) {
+        } else if (in_array(strlen($ss58_format), [16])) {
             $checksum_length = 7;
-        } else if (in_array(sizeof($ss58_format), [17])) {
+        } else if (in_array(strlen($ss58_format), [17])) {
             $checksum_length = 8;
         } else {
-            throw new ValueErrorException("Invalid address length");
+            throw new Exception("Invalid address length");
         }
-        $checksum = hash($checksum_prefix, array_slice($ss58_format, 0, --$checksum_length));
+        $checksum = hash($checksum_prefix, $ss58_format);
 
-        if (substr($checksum, 0, $checksum_length) != array_slice($ss58_format, 0, --$checksum_length)) {
-            throw new ValueErrorException("Invalid checksum");
+        if (substr($checksum, 0, $checksum_length) != $ss58_format) {
+            throw new Exception("Invalid checksum");
         }
-        $position = sizeof($ss58_format) - $checksum_length;
-        return bin2hex(array_slice($ss58_format, 1, $position));
+        $position = strlen($ss58_format) - $checksum_length;
+        return bin2hex(substr($ss58_format, 1, $position));
     }
 
     /*
@@ -71,8 +79,17 @@ class ss58
 
     public static function ss58_encode($address, $address_type = 42)
     {
-
+        $blake2b = new Blake2b();
+        $base58 = new Base58('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ');
         $checksum_prefix = 'SS58PRE';
+
+        if ($address_type){
+            $ss58_format = $address_type;
+        }
+        
+        if ($ss58_format < 0 || $ss58_format > 16383 || in_array($ss58_format , [46, 47])){
+            throw new Exception("Invalid value for ss58_format");
+        }
 
         $encodingType = mb_detect_encoding($address);
         if (mb_check_encoding($address, $encodingType)) {
@@ -88,12 +105,17 @@ class ss58
             # Checksum size is 1 byte for account index
             $checksum_length = 1;
         } else {
-            throw new ValueErrorException("Invalid length for address");
+            throw new Exception("Invalid length for address");
         }
-        $address_format = random_bytes($address_type) . $address_bytes;
-        $checksum = hash($checksum_prefix, $address_format);
 
-        return base58::base58_encode(utf8_decode($address_format.$checksum));
+        if ($ss58_format < 64){
+            $ss58_format_bytes = random_bytes($ss58_format);
+    }
+    
+        $input_bytes = $ss58_format_bytes + $address_bytes;
+        $checksum = $blake2b->hash($checksum_prefix + $input_bytes);
+        return $base58->encode($input_bytes.$checksum);
+
     }
 
     /*
@@ -119,7 +141,7 @@ class ss58
         } else if (2 ** 32 <= $account_index <= pow(2, 64) - 1) {
             $account_idx_encoder = U64();
         } else {
-            throw new ValueErrorException("Value too large for an account index");
+            throw new Exception("Value too large for an account index");
         }
         return $this->ss58_encode($account_idx_encoder . encode($account_index) . data, $address_type);
     } */
@@ -149,7 +171,7 @@ class ss58
         } else if (sizeof($account_index_bytes) == 16) {
             return U64(ScaleBytes('0x{}' . format($account_index_bytes))) . decode();
         } else {
-            throw new ValueErrorException("Invalid account index length");
+            throw new Exception("Invalid account index length");
         }
     } */
 }

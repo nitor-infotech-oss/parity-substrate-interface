@@ -161,5 +161,30 @@ class SubstrateInterface
         $this->signature = ($response->result) ? $response->result->signature : NULL;
         return $this->signature;
     }
+
+    /* Compose Call API
+    Composes a call payload which can be used as an unsigned extrinsic or a proposal.
+
+    Parameters
+    ----------
+    call_module: Name of the runtime module e.g. Balances
+    call_function: Name of the call function e.g. transfer
+    call_params: This is a dict containing the params of the call. e.g. `{'dest': 'EaG2CRhJWPb7qmdcJvy3LiWdh26Jreu9Dx6R1rXxPmYXoDk', 'value': 1000000000000}`
+    block_hash: Use metadata at given block_hash to compose call
+
+    Returns
+    -------
+    GenericCall
+    */
+
+    public function compose_call($call_module, $call_function, $call_params = 'None', $block_hash = 'None')
+    {
+        if($call_params == 'None'){
+            $call_params = json_encode([]) ;
+        }
+        $this->block_hash = $block_hash;
+        
+        return $this->block_hash;
+    }
 }
 ?>
