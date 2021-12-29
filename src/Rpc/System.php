@@ -100,7 +100,7 @@ class System
     public function properties()
     {
         $response = json_decode($this->apiHandler->APIHandler(System::SYSTEM_PREFIX . __FUNCTION__));
-        print_r($response->result->ss58Format);die;
+        // print_r($response->result->ss58Format);die;
         $result = ($response->result) ? ['status' => 1, 'data' => $response->result] : ['status' => 0, 'data' => $response->error];
         return json_encode($result);
     }

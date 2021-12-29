@@ -6,7 +6,7 @@ use nitorInfoTechOss\SubstrateInterfacePackage\SubstrateInterface;
 use nitorInfoTechOss\SubstrateInterfacePackage\Exception;
 use PHPUnit\Framework\TestCase;
 
-class SubstrateInterfaceTest extends TestCase
+class ApiHandlerTest extends TestCase
 {
     /** @test
      * return RPC Methods
@@ -123,7 +123,7 @@ class SubstrateInterfaceTest extends TestCase
 
         $obj = new SubstrateInterface("http://127.0.0.1:8000");
 
-        $actualResult = json_decode($obj->rpc->system->peers());
+        $actualResult = json_decode($obj->rpc->system->localPeerId());
 
         $this->assertNotEmpty($actualResult->data);
     }
@@ -668,10 +668,10 @@ class SubstrateInterfaceTest extends TestCase
      */
     public function testRuntimeGetMetadataEvents()
     {
-
+        $param = [521155];
         $obj = new SubstrateInterface("http://127.0.0.1:8000");
 
-        $actualResult = json_decode($obj->rpc->runtime->getMetadataEvents());
+        $actualResult = json_decode($obj->rpc->runtime->getMetadataEvents($param));
 
         $this->assertNotEmpty($actualResult->data);
     }
