@@ -8,7 +8,7 @@
     }],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.2.24",
+        "php": "^7.4|^8.0|^8.1",
         "curl/curl": "^2.3",
         "deemru/blake2b": "^1.0",
         "furqansiddiqui/bip39-mnemonic-php": "^0.1.4",
